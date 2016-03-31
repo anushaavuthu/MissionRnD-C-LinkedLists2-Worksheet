@@ -12,12 +12,32 @@ NOTES:
 */
 
 #include <stdio.h>
-
+#include<malloc.h>
 struct node {
 	int num;
 	struct node *next;
 };
 
 struct node * reverseLinkedList(struct node *head) {
+	if (head != NULL){
+		int len,i,j;
+		struct node* temp=head;
+		struct node* res=NULL;
+		while (temp != NULL){
+			struct node* nn = (struct node*)malloc(sizeof(struct node*));
+			nn->num = temp->num;
+			nn->next = NULL;
+			if (res== NULL){
+				res = nn;
+			}
+			else{
+				nn->next = res;
+				res = nn;
+			}
+			temp = temp->next;
+		}
+		return res;
+
+	}
 	return NULL;
 }
